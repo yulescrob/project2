@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6158a8a3-ed6e-4750-84f7-ae5cfd531cc8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pythonFile.py" afterDir="false" />
+    <list default="true" id="6158a8a3-ed6e-4750-84f7-ae5cfd531cc8" name="Changes" comment="sol problem 1">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pythonFile.py" beforeDir="false" afterPath="$PROJECT_DIR$/pythonFile.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +47,63 @@
       <option name="presentableId" value="Default" />
       <updated>1738352406546</updated>
     </task>
+    <task id="LOCAL-00001" summary="sol problem 1">
+      <created>1738965180567</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965180567</updated>
+    </task>
+    <task id="LOCAL-00002" summary="sol problem 1">
+      <created>1738965224875</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965224875</updated>
+    </task>
+    <task id="LOCAL-00003" summary="sol problem 1">
+      <created>1738965233306</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965233306</updated>
+    </task>
+    <task id="LOCAL-00004" summary="sol problem 1">
+      <created>1738965316069</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965316069</updated>
+    </task>
+    <task id="LOCAL-00005" summary="sol problem 1">
+      <created>1738965338434</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965338434</updated>
+    </task>
+    <task id="LOCAL-00006" summary="sol problem 1">
+      <created>1738965499737</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965499737</updated>
+    </task>
+    <task id="LOCAL-00007" summary="sol problem 1">
+      <created>1738965507829</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965507829</updated>
+    </task>
+    <task id="LOCAL-00008" summary="sol problem 1">
+      <created>1738965515902</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1738965515902</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -63,5 +116,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="sol problem 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="sol problem 1" />
   </component>
 </project>
