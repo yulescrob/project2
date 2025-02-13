@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6158a8a3-ed6e-4750-84f7-ae5cfd531cc8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/project2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pythonFile.py" afterDir="false" />
-    </list>
+    <list default="true" id="6158a8a3-ed6e-4750-84f7-ae5cfd531cc8" name="Changes" comment="commit problem 1" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +44,14 @@
       <option name="presentableId" value="Default" />
       <updated>1738352406546</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit problem 1">
+      <created>1739486991055</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1739486991055</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -63,5 +64,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="commit problem 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit problem 1" />
   </component>
 </project>
