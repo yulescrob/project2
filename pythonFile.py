@@ -1,9 +1,11 @@
 # make sure the following packages are downloaded and then run the command to import
-import pandas as pd
+
+#import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
+from scipy.optimize import minimize
 
-
+'''
 # Load the dataset
 df = pd.read_csv("fredgraph.csv")
 
@@ -117,4 +119,66 @@ plt.show()
 
 
 # Trying different
+
+'''
+
+# Part 4 - Optimization
+def utility(params):
+    c1, c2 = params
+    return -(np.log(c1) + beta * np.log(c2))  # Negative function to use minimize
+
+def constraint1(params):
+    c1, s = params
+    return w1 - c1 - s  # Budget constraint in period 1
+
+def constraint2(params):
+    c1, s = params
+    c2 = s * (1 + r) # Second constraint
+    return c2 - beta * (1 + r) * c1  # Derived relationship between c1 and c2
+
+# Given parameters
+beta = 0.95
+r = 0.05
+w1 = 100
+
+# Initial guess
+initial_guess = [w1 / 2, w1 / 2]
+
+# Constraints
+eq_constraints = ({'type': 'eq', 'fun': constraint1},
+                  {'type': 'eq', 'fun': constraint2})
+
+# Solve optimization
+solution = minimize(utility, initial_guess, constraints=eq_constraints, bounds=((1e-5, w1), (1e-5, w1)))
+
+c1_opt, s_opt = solution.x
+c2_opt = s_opt * (1 + r)
+
+print(f"Optimal c1: {c1_opt:.4f}")
+print(f"Optimal c2: {c2_opt:.4f}")
+
+# Loops to see changes in beta and r
+beta_values = [0.90, 0.95, 1.00]  # Different discount factors
+r_values = [0.03, 0.05, 0.07]  # Different interest rates
+w1 = 100
+w2_values = [0, 100, 10000]  # Different future wealth values
+
+for beta in beta_values:
+    for r in r_values:
+        for w2 in w2_values:
+            # Initial guess
+            initial_guess = [w1 / 2, w1 / 2]
+
+            # Constraints
+            eq_constraints = ({'type': 'eq', 'fun': constraint1},
+                              {'type': 'eq', 'fun': constraint2})
+
+            # Solve optimization
+            solution = minimize(utility, initial_guess, constraints=eq_constraints, bounds=((1e-5, w1), (1e-5, w1)))
+
+            c1_opt, s_opt = solution.x
+            c2_opt = s_opt * (1 + r) + w2
+
+            print(f"beta: {beta}, r: {r}, w2: {w2}")
+            print(f"Optimal c1: {c1_opt:.4f}, Optimal c2: {c2_opt:.4f}\n")
 
