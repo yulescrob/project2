@@ -4,7 +4,7 @@
 
 ### Data
 
-Data was downloaded from FRED. Yearly data was gathered from January 1950 to January 2019 with variables average hours worked, real GDP, and capital. 
+Data was downloaded from FRED. Yearly data was gathered from January 1950 to January 2019 with variables average weekly hours worked, real GDP, and capital. 
 
 ### Replicating
-To replicate the project, ensure you have the packages downloaded. You can download the packages by running "pip install {NAME OF PACKAGE}" into the console. 
+The name of the main file is pythonFile.py. To replicate the project, ensure you have the packages downloaded. You can download the packages by running "pip install {NAME OF PACKAGE}" into the console. 
