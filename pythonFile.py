@@ -1,11 +1,9 @@
 # make sure the following packages are downloaded and then run the command to import
-
-#import pandas as pd
+import pandas as pd
 import numpy as np
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 
-'''
 # Load the dataset
 df = pd.read_csv("fredgraph.csv")
 
@@ -50,75 +48,53 @@ plt.show()
 delta = 0.037 # depreciation
 savings_rate = 0.038 # savings rate
 
-# Extract base year values
-base_data = df[df["date"] == base_year]
-if base_data.empty:
-    raise ValueError(f"Base year {base_year} not found in data.")
+# Compute initial capital per worker (k0)
+df['k_t'] = df['capital'] / df['hrs_work']
 
-K0 = base_data["capital"].values[0]  # Initial capital stock
-L0 = base_data["hrs_work"].values[0]  # Initial labor force
-A0 = base_data["A_t"].values[0]  # TFP in base year
-k0 = K0 / L0  # Initial capital per worker
+# Simulate  path of k_t
+num_years = 100  # Simulate for 100 years
+k_path = [df['k_t'].iloc[0]]  # Start with initial k_t
+A_t = df['A_t'].iloc[0]  # Use initial TFP
 
-# Simulate capital per worker over time
-years = 200  # Number of periods to simulate
-kt_path = [k0]
+if not np.issubdtype(df['date'].dtype, np.datetime64):
+    df['date'] = pd.to_datetime(df['date'], errors='coerce')
 
-for t in range(1, years):
-    kt_next = savings_rate * A0 * (kt_path[-1] ** alpha) + (1 - delta) * kt_path[-1]
-    kt_path.append(kt_next)
+# Get the starting year from the dataset
+start_year = df['date'].dt.year.iloc[0]
+years = [start_year + t for t in range(num_years)]
+for t in range(num_years - 1):
+    k_next = savings_rate * A_t * (k_path[-1] ** alpha) + (1 - delta) * k_path[-1]
+    k_path.append(k_next)
 
-    # Check for convergence to steady-state
-    if abs(kt_path[-1] - kt_path[-2]) < 1e-6:  # Stopping condition
-        print(f"Converged at year {t}")
-        break
+# Compute aggregate output path Y_t
+Y_path = [A_t * (k ** alpha) * df['hrs_work'].iloc[0] for k in k_path]
 
-# Compute steady-state capital per worker
-k_star = (savings_rate * A0 / delta) ** (1 / (1 - alpha))
-print(f"Steady-state capital per worker: {k_star:.2f}")
-
-# Plot capital per worker over time
-plt.figure(figsize=(10, 5))
-plt.plot(range(len(kt_path)), kt_path, marker="o", linestyle="-", color="b", label="Capital per Worker (k_t)")
-plt.axhline(y=k_star, color="r", linestyle="--", label=f"Steady-State k* = {k_star:.2f}")
-plt.xlabel("Years")
-plt.ylabel("Capital per Worker (k_t)")
-plt.title("Solow Model Simulation: Capital per Worker Over Time")
+yt_df = pd.DataFrame({'Year': years, 'Simulated_Yt': Y_path})
+yt_df.to_csv("simulated_Yt.csv", index=False)
+# Plot the path of k_t and Y_t
+plt.figure(figsize=(10,5))
+plt.plot(years, Y_path, label='Aggregate Output (Y_t)', color='b', linestyle='dashed')
+plt.xlabel('Year')
+plt.ylabel('Value')
+plt.title('Aggregate Output')
 plt.legend()
-plt.grid(True)
+plt.grid()
 plt.show()
 
-# Calculating aggregate output
-Yt_path = []
-
-for t in range(1, years):
-    # Update capital per worker
-    kt_next = savings_rate * A0 * (kt_path[-1] ** alpha) + (1 - delta) * kt_path[-1]
-    kt_path.append(kt_next)
-
-    # Compute aggregate capital
-    Kt = kt_next * L0  # K_t = k_t * L_t (assuming constant L_t)
-
-    # Compute aggregate output Y_t
-    Yt = A0 * (Kt ** alpha) * (L0 ** (1 - alpha))
-    Yt_path.append(Yt)
-
-    # Check for convergence
-    if len(Yt_path) > 1 and abs(Yt_path[-1] - Yt_path[-2]) < 1e-6:
-        print(f"Output converged at year {t}")
-        break
-
-plt.figure(figsize=(10, 5))
-plt.plot(range(len(Yt_path)), Yt_path, marker="o", linestyle="-", color="g", label="Aggregate Output (Y_t)")
-plt.xlabel("Years")
-plt.ylabel("Output (Y_t)")
-plt.title("Solow Model Simulation: Aggregate Output Over Time")
+plt.figure(figsize=(10,5))
+plt.plot(years, k_path, label='Capital per Worker (k_t)', color='g')
+plt.xlabel('Year')
+plt.ylabel('Value')
+plt.title('Simulated Paths of Capital per Worker')
 plt.legend()
-plt.grid(True)
+plt.grid()
 plt.show()
 
+df.to_csv("tfp_results.csv", index=False)
 
-# Trying different
+# Part 3
+
+
 
 '''
 
@@ -182,3 +158,4 @@ for beta in beta_values:
             print(f"beta: {beta}, r: {r}, w2: {w2}")
             print(f"Optimal c1: {c1_opt:.4f}, Optimal c2: {c2_opt:.4f}\n")
 
+'''
